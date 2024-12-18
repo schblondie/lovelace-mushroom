@@ -14,7 +14,9 @@ export function computeAppearance(
     layout: config.layout ?? getDefaultLayout(config),
     fill_container: config.fill_container ?? false,
     primary_info: config.primary_info ?? getDefaultPrimaryInfo(config),
+    primary_template: config.primary_template,
     secondary_info: config.secondary_info ?? getDefaultSecondaryInfo(config),
+    secondary_template: config.secondary_template,
     icon_type: config.icon_type ?? getDefaultIconType(config),
   };
 }
