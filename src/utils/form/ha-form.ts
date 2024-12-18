@@ -18,8 +18,7 @@ export type HaFormSchema =
   | HaFormMultiSelectSchema
   | HaFormTimeSchema
   | HaFormSelector
-  | HaFormGridSchema
-  | HaFormConditionalSchema;
+  | HaFormGridSchema;
 
 export interface HaFormBaseSchema {
   name: string;
@@ -34,11 +33,6 @@ export interface HaFormBaseSchema {
   context?: Record<string, string>;
 }
 
-export interface HaFormConditionalSchema extends HaFormBaseSchema {
-  type: "conditional";
-  conditions: Array<Record<string, unknown>>;
-  schema: HaFormSchema[];
-}
 export interface HaFormGridSchema extends HaFormBaseSchema {
   type: "grid";
   name: "";

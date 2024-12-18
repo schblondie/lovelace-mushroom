@@ -18,8 +18,8 @@ All the options are available in the lovelace editor but you can use `yaml` if y
 | `name`                 | string                                              | Optional    | Custom name                                                                                     |
 | `layout`               | string                                              | Optional    | Layout of the card. Vertical, horizontal and default layout are supported                       |
 | `fill_container`       | boolean                                             | `false`     | Fill container or not. Useful when card is in a grid, vertical or horizontal layout             |
-| `primary_info`         | `name` `state` `last-changed` `last-updated`, `template` `none` | `name`      | Info to show as primary info                                                                    |
-| `secondary_info`       | `name` `state` `last-changed` `last-updated`, `template` `none` | `state`     | Info to show as secondary info                                                                  |
+| `primary_info`         | `name` `state` `last-changed` `last-updated` `none` | `name`      | Info to show as primary info                                                                    |
+| `secondary_info`       | `name` `state` `last-changed` `last-updated` `none` | `state`     | Info to show as secondary info                                                                  |
 | `icon_type`            | `icon` `entity-picture` `none`                      | `icon`      | Type of icon to display                                                                         |
 | `use_media_info`       | boolean                                             | `false`     | Use media info instead of name, state and icon when a media is playing                          |
 | `show_volume_level`    | boolean                                             | `false`     | Show volume level next to media state when media is playing                                     |
