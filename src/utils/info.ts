@@ -9,7 +9,6 @@ export const INFOS = [
   "state",
   "last-changed",
   "last-updated",
-  "template",
   "none",
 ] as const;
 export type Info = (typeof INFOS)[number];
@@ -61,14 +60,6 @@ export function computeInfoDisplay(
           capitalize
         ></ha-relative-time>
       `;
-    case "template":
-      return html`
-        <hui-template
-          .hass=${hass}
-          .stateObj=${stateObj}
-          .template=${name}
-          ></hui-template>
-        `;
     case "none":
       return undefined;
   }
