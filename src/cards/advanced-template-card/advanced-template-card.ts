@@ -37,6 +37,18 @@ import { weatherSVGStyles } from "../../utils/weather";
 import { TEMPLATE_CARD_EDITOR_NAME, TEMPLATE_CARD_NAME } from "./const";
 import { TemplateCardConfig } from "./advanced-template-card-config";
 
+// Import controls from other cards
+// Climate
+import "../climate-card/controls/climate-hvac-modes-control";
+import "../climate-card/controls/climate-temperature-control";
+// Media player
+import "../media-player-card/controls/media-player-media-control";
+import "../media-player-card/controls/media-player-volume-control";
+// Cover
+import "../cover-card/controls/cover-position-control";
+import "../cover-card/controls/cover-buttons-control";
+import "../cover-card/controls/cover-tilt-position-control";
+
 registerCustomCard({
   type: TEMPLATE_CARD_NAME,
   name: "Mushroom Template",
@@ -244,9 +256,79 @@ export class TemplateCard extends MushroomBaseElement implements LovelaceCard {
               .multiline_secondary=${multiline_secondary}
             ></mushroom-state-info>
           </mushroom-state-item>
+          ${this.renderControls()}
         </mushroom-card>
       </ha-card>
     `;
+  }
+
+  private renderControls(): TemplateResult | typeof nothing {
+    if (!this._config || !this.hass) {
+      return nothing;
+    }
+
+    const entity = this.hass.states[this._config.entity!];
+    if (!entity) {
+      return nothing;
+    }
+
+    switch (this._config.type) {
+      case "climate":
+        return html`
+          <div class="actions">
+            <mushroom-climate-temperature-control
+              .hass=${this.hass}
+              .entity=${entity}
+              .fill=${true}
+            ></mushroom-climate-temperature-control>
+            <mushroom-climate-hvac-modes-control
+              .hass=${this.hass}
+              .entity=${entity}
+              .modes=${this._config.hvac_modes}
+              .fill=${true}
+            ></mushroom-climate-hvac-modes-control>
+          </div>
+        `;
+      case "media-player":
+        return html`
+          <div class="actions">
+            <mushroom-media-player-media-control
+              .hass=${this.hass}
+              .entity=${entity}
+              .controls=${this._config.media_controls}
+              .fill=${true}
+            ></mushroom-media-player-media-control>
+            <mushroom-media-player-volume-control
+              .hass=${this.hass}
+              .entity=${entity}
+              .controls=${this._config.volume_controls}
+              .fill=${true}
+            ></mushroom-media-player-volume-control>
+          </div>
+        `;
+      case "cover":
+        return html`
+          <div class="actions">
+            <mushroom-cover-position-control
+              .hass=${this.hass}
+              .entity=${entity}
+              .fill=${true}
+            ></mushroom-cover-position-control>
+            <mushroom-cover-buttons-control
+              .hass=${this.hass}
+              .entity=${entity}
+              .fill=${true}
+            ></mushroom-cover-buttons-control>
+            <mushroom-cover-tilt-position-control
+              .hass=${this.hass}
+              .entity=${entity}
+              .fill=${true}
+            ></mushroom-cover-tilt-position-control>
+          </div>
+        `;
+      default:
+        return nothing;
+    }
   }
 
   renderPicture(picture: string): TemplateResult {
