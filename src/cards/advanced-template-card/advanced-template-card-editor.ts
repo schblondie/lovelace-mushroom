@@ -26,7 +26,7 @@ export const TEMPLATE_LABELS = [
 
 const SCHEMA: HaFormSchema[] = [
   { name: "entity", selector: { entity: {} } },
-  { name: "type", selector: { template: {} } },
+  { name: "elements", selector: { template: {} } },
   {
     name: "icon",
     selector: { template: {} },

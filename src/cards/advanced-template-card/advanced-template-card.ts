@@ -51,7 +51,7 @@ import "../cover-card/controls/cover-tilt-position-control";
 
 registerCustomCard({
   type: TEMPLATE_CARD_NAME,
-  name: "Mushroom Template",
+  name: "Mushroom Advanced Template",
   description: "Build your own mushroom card using templates",
 });
 
@@ -272,7 +272,7 @@ export class TemplateCard extends MushroomBaseElement implements LovelaceCard {
       return nothing;
     }
 
-    switch (this._config.type) {
+    switch (this._config.elements) {
       case "climate":
         return html`
           <div class="actions">
