@@ -19,6 +19,7 @@ import "./cards/media-player-card/media-player-card";
 import "./cards/person-card/person-card";
 import "./cards/select-card/select-card";
 import "./cards/template-card/template-card";
+import "./cards/advanced-template-card/advanced-template-card";
 import "./cards/title-card/title-card";
 import "./cards/update-card/update-card";
 import "./cards/vacuum-card/vacuum-card";
